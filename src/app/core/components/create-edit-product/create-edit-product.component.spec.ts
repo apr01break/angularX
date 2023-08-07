@@ -48,7 +48,7 @@ describe('CreateEditProductComponent', () => {
       id: 'PM22', name: 'Tarjeta XYS', description: 'XYS description test', logo: 'https://img.freepik.com/vector-gratis/ilustracion-vector-banner-sello-circulo_53876-27183.jpg', date_release: new Date('2023-10-08'), date_revision: new Date('2024-10-08') 
     };
     component.productService.createProduct(product).subscribe(data => {
-      expect(data).toBe(product);
+      expect(data).toEqual(product);
     })
   });
 });
