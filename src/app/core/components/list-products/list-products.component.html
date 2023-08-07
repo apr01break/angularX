@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="panel">
+    <input class="input-form" type="text" placeholder="Buscar..." [(ngModel)]="searchText" />
+    <a class="btn-yellow" routerLink="/create">Agregar</a>
+  </div>
+  <div class="block-space">
+    <table>
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!saveInProgress && products.length == 0">
+          <td colspan="6" class="empty-td">No hay productos registrados</td>
+        </tr>
+        <tr *ngFor="let product of products | filter:searchText | pagination: {page:currentPage, pageSize: pageSize} ">
+          <td class="img">
+            <img [src]="product.logo">
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.date_release | date:"dd/MM/yyyy":"UTC" }}</td>
+          <td>{{ product.date_revision | date:"dd/MM/yyyy":"UTC" }}</td>
+          <td class="img">
+            <div class="dropdown">
+              <button class="drop-btn" (click)="toggleDropdown(product.id)">
+                <img src="https://cdn-icons-png.flaticon.com/512/7066/7066144.png">
+              </button>
+              <div class="dropdown-content" [ngStyle]="{ 'display': openedDropdown === product.id ? 'block' : 'none' }">
+                <a (click)="updateProduct(product)">Editar</a>
+                <a (click)="deleteProduct(product.id)">Eliminar</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-pagination (paginationEmitter)="goToPage($event.currentPage, $event.pageSize)" [currentPage]="currentPage"
+      [pageSize]="pageSize" [numberRecords]="numberRecords"></app-pagination>
+  </div>
+</div>
+<app-overlay *ngIf="saveInProgress"></app-overlay>
+<app-message *ngIf="message" [message]="message"></app-message>

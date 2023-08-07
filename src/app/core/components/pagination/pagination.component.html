@@ -1,0 +1,11 @@
+<div class="info">
+  <span class="results">{{numberRecords}} Resultados</span>
+  <div *ngIf="numberRecords" class="pagination">
+    <select class="page-size-select" [(ngModel)]="pageSize" (change)="changePageSize()">
+      <option *ngFor="let option of pageSizeOptions">{{option}}</option>
+    </select>
+    <button [disabled]="currentPage <= 1" (click)="previous()">Anterior</button>
+    <span>Página {{currentPage}} de {{totalPages}}</span>
+    <button [disabled]="currentPage >= totalPages" (click)="next()">Siguiente</button>
+  </div>
+</div>

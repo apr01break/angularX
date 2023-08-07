@@ -1,0 +1,12 @@
+header {
+    background-color: white;
+    padding: 3px 30px;
+    width: auto;
+    text-align: center;
+}
+
+img {
+    height: 60px;
+    display:inline-block;
+    margin: 0 auto;
+}

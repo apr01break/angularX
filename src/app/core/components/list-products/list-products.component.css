@@ -1,0 +1,101 @@
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    word-break: break-all;
+}
+
+thead {
+    background-color: #f5f6fa;
+}
+
+th {
+    padding: 18px 14px;
+}
+
+td {
+    padding: 5px 14px;
+    border-bottom: solid 2px rgba(209, 208, 208, 0.3);
+}
+
+th:last-child {
+    width: 45px;
+}
+
+td:last-child {
+    width: 45px;
+}
+
+td.img {
+    text-align: center;
+}
+
+.panel {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    height: 45px;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.drop-btn {
+    background-color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+}
+
+.drop-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.drop-btn img {
+    height: 25px;
+    width: 28px;
+}
+
+.dropdown-content {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    min-width: 90px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    padding: 10px 12px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.loading-td {
+    font-size: 16px;
+    text-align: center;
+    padding: 17px 0px;
+}
+
+.empty-td {
+    text-align: center;
+    padding: 17px 0px;
+}

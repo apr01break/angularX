@@ -1,0 +1,67 @@
+form .input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .input-group .input-form-box {
+    margin: 10px 3px;
+    width: calc(100% / 2 - 20px);
+}
+
+form .input-group .input-form-box .form-label {
+    font-weight: 640;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-form {
+    width: 100%;
+    outline: none;
+    border-width: 2px;
+}
+
+.invalid-input {
+    border-color: red;
+}
+
+.input-valid {
+    border-color: green;
+}
+
+.invalid-span {
+    color: red;
+    font-size: 12px;
+}
+
+.title {
+    text-align: center;
+}
+
+.buttons {
+    margin: 20px 50px 10px 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container {
+    width: 55%;
+    margin: 50px auto;
+}
+
+.back {
+    position: absolute;
+    top: 10;
+    left: 10;
+    background-color: white;
+    color: #0f265c;
+    font-weight: bold;
+    padding: 8px 14px;
+    border: 1px solid #0f265c;
+    border-radius: 19px 2px 2px 19px;
+    cursor: pointer;
+}
+
+.back:hover {
+    background-color: rgba(209, 208, 208, 0.4);
+}

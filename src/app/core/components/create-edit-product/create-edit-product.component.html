@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="block-space">
+    <button class="back" [routerLink]="['']">Atrás</button>
+    <form [formGroup]="form" (ngSubmit)="saveProduct()">
+      <h1 class="title">Formulario de registro</h1>
+      <div class="input-group">
+        <div class="input-form-box">
+          <label class="form-label">ID</label>
+          <input type="text" class="input-form" formControlName="id"
+            [class.input-valid]="this.form.get('id')?.valid && !idExists"
+            [class.invalid-input]="(this.form.get('id')?.invalid || idExists) && this.form.get('id')?.touched"
+            minlength="3" maxlength="10" (input)="checkIdExistence()" />
+          <span *ngIf="idExists" class="invalid-span">ID no válido (ya existe)</span>
+          <span *ngIf="this.form.get('id')?.errors?.['required'] && this.form.get('id')?.touched"
+            class="invalid-span">Este campo es requerido</span>
+          <span
+            *ngIf="(this.form.get('id')?.errors?.['minlength'] || this.form.get('id')?.errors?.['maxlength']) && this.form.get('id')?.touched"
+            class="invalid-span">Debe tener entre 3 y 10 caracteres</span>
+        </div>
+        <div class="input-form-box">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="input-form" formControlName="name"
+            [class.input-valid]="this.form.get('name')?.valid"
+            [class.invalid-input]="this.form.get('name')?.invalid && this.form.get('name')?.touched" minlength="5"
+            maxlength="100" />
+          <span *ngIf="this.form.get('name')?.errors?.['required'] && this.form.get('name')?.touched"
+            class="invalid-span">Este campo es requerido</span>
+          <span
+            *ngIf="(this.form.get('name')?.errors?.['minlength'] || this.form.get('name')?.errors?.['maxlength']) && this.form.get('name')?.touched"
+            class="invalid-span">Debe tener entre 5 y 100 caracteres</span>
+        </div>
+        <div class="input-form-box">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="input-form" formControlName="description"
+            [class.input-valid]="this.form.get('description')?.valid"
+            [class.invalid-input]="this.form.get('description')?.invalid && this.form.get('description')?.touched"
+            minlength="10" maxlength="200" />
+          <span *ngIf="this.form.get('description')?.errors?.['required'] && this.form.get('description')?.touched"
+            class="invalid-span">Este campo es requerido</span>
+          <span
+            *ngIf="(this.form.get('description')?.errors?.['minlength'] || this.form.get('description')?.errors?.['maxlength']) && this.form.get('description')?.touched"
+            class="invalid-span">Debe tener entre 10 y 200 caracteres</span>
+        </div>
+        <div class="input-form-box">
+          <label class="form-label">Logo</label>
+          <input type="text" class="input-form" formControlName="logo"
+            [class.input-valid]="this.form.get('logo')?.valid"
+            [class.invalid-input]="this.form.get('logo')?.invalid && this.form.get('logo')?.touched" />
+          <span *ngIf="this.form.get('logo')?.errors?.['required'] && this.form.get('logo')?.touched"
+            class="invalid-span">Este campo es requerido</span>
+        </div>
+        <div class="input-form-box">
+          <label class="form-label">Fecha Liberación</label>
+          <input type="date" class="input-form" formControlName="date_release"
+            [class.input-valid]="this.form.get('date_release')?.valid"
+            [class.invalid-input]="this.form.get('date_release')?.invalid && this.form.get('date_release')?.touched"
+            (change)="onDateReleaseChange()" />
+          <span *ngIf="this.form.get('date_release')?.errors?.['required'] && this.form.get('date_release')?.touched"
+            class="invalid-span">Este campo es requerido</span>
+          <span
+            *ngIf="this.form.get('date_release')?.errors?.['dateNotEqualOrHigherThanToday'] && this.form.get('date_release')?.touched"
+            class="invalid-span">Esta fecha debe ser mayor o igual a hoy</span>
+        </div>
+        <div class="input-form-box">
+          <label class="form-label">Fecha Revisión</label>
+          <input type="date" class="input-form" formControlName="date_revision" [readonly]="true" />
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn-gray" type="button" (click)="resetForm()">Reiniciar</button>
+        <button [disabled]="form.invalid" type="submit" class="btn-yellow">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-overlay *ngIf="saveInProgress"></app-overlay>
